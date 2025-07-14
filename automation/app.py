@@ -171,7 +171,7 @@ def index():
                 )
                 
                 
-                flash(f"✅ Your learning plan of {topic} has been sent to your email.", "success")
+                flash(f"✅ Your learning plan of {topic} has been sent to your email.if not check the spam messages in your email", "success")
 
         else:
             flash(
