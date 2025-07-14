@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambition Form</title>
+  <style>
+    :root {
+      --primary: #00d1ff;
+      --accent: #004aad;
+      --dark-bg: #050912;
+      --accent-bg: #0f172a;
+      --glass-bg: rgba(15, 23, 42, 0.75);
+      --text-light: #e2e8f0;
+      --success: #22c55e;
+      --error: #f87171;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--dark-bg), var(--accent-bg));
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .form-container {
+      background: var(--glass-bg);
+      padding: 2.5rem;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 0 15px rgba(0, 209, 255, 0.3);
+      width: 340px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 209, 255, 0.3);
+    }
+
+    .form-container h2 {
+      margin: 0 0 1.5rem;
+      color: var(--primary);
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    .input-group {
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 1rem 0.75rem 0.25rem;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--accent-bg);
+      color: var(--text-light);
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-wrapper input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 2px 10px rgba(0, 209, 255, 0.3);
+    }
+
+    .input-wrapper label {
+      position: absolute;
+      top: 1rem;
+      left: 0.75rem;
+      font-size: 0.95rem;
+      color: #94a3b8;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .input-wrapper input:focus + label,
+    .input-wrapper input:not(:placeholder-shown) + label {
+      top: -0.5rem;
+      left: 0.5rem;
+      background: var(--glass-bg);
+      padding: 0 0.4rem;
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+
+    .error-message {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--error);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), #00b5e0);
+      color: #0a0f1f;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #00b5e0, var(--primary));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 209, 255, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .flash-message {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      padding: 0.75rem;
+    }
+
+    .flash-success {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--success);
+    }
+
+    .flash-error {
+      background: rgba(220, 38, 38, 0.2);
+      color: var(--error);
+    }
+
+    .flash-danger {
+  background-color: var(--error);
+  color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+
+    @media (max-width: 400px) {
+      .form-container {
+        width: 90%;
+        padding: 2rem;
+      }
+    }
+
+    /* Autofill Fix */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 9999s ease-in-out 0s;
+      -webkit-text-fill-color: var(--text-light) !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Dream Profession</h2>
+    <form method="POST" novalidate>
+      {{ form.hidden_tag() }}
+
+      <div class="input-group">
+        <div class="input-wrapper">
+          {{ form.email(class="input-field", placeholder=" ") }}
+          <label for="email">Email</label>
+        </div>
+        {% for error in form.email.errors %}
+          <div class="error-message">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="input-group">
+        <div class="input-wrapper">
+          {{ form.ambition(class="input-field", placeholder=" ") }}
+          <label for="ambition">Give Profession</label>
+        </div>
+        {% for error in form.ambition.errors %}
+          <div class="error-message">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      {{ form.submit(id="submit-btn", class="btn") }}
+     <div id="loading-message" style="display:none; margin-top:1rem; text-align:center;">Processing... please wait.You will get emails in a while</div>
+
+    </form>
+
+   {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'danger' %}
+        <div class="flash-message flash-{{ category }} flash-important">
+          {{ message }}
+        </div>
+      {% else %}
+        <div class="flash-message flash-{{ category }}">
+          {{ message }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+  </div>
+  <script>
+  const form = document.querySelector('form');
+  const submitBtn = document.getElementById('submit-btn');
+  const loadingMsg = document.getElementById('loading-message');
+
+  form.addEventListener('submit', function(event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+    loadingMsg.style.display = "block";
+  });
+</script>
+
+</body>
+</html>

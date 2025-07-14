@@ -1,0 +1,35 @@
+🌟 Project Overview
+
+I have built an intelligent web application that automates the process of planning your ambitious career path by discovering and delivering curated free learning resources directly to your email.
+
+🚀 Key Features
+
+Automated Search & Discovery:
+Uses SERP API and Selenium to search Google and YouTube for high-quality, relevant materials on your chosen career fields.
+
+AI-Powered Recommendations:
+Integrates the OpenAI API to generate personalized guidance, learning plans, and resource summaries.
+
+Seamless Web Experience:
+Built with Flask, HTML, CSS, and JavaScript to provide a smooth and interactive user interface.
+
+Data Management:
+Utilizes Sheety API to log user selections and track recommended resources in real-time via Google Sheets.
+
+Automated Email Delivery:
+Once resources are gathered, the system sends them to your email, ensuring you have everything you need to get started.
+
+💡 Purpose
+
+This project is designed to empower individuals to take charge of their learning journey by removing the friction of manually searching and filtering content. Whether you’re exploring new fields or upskilling in your current role, the platform helps you find credible, free resources quickly and conveniently.
+
+🔑 Note on API Usage
+
+If my SERP API key expires or exceeds quota, the application can be easily adapted to use:
+
+Alternative APIs (e.g., Serper.dev)
+
+Headless browsing with Selenium
+
+AI-generated recommendations without live search
+

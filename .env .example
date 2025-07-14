@@ -1,0 +1,5 @@
+url=url
+secret_key=key
+open_ai=ai_api_key
+smtplib_password=smtp
+serp_api=serp_api

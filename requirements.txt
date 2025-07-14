@@ -1,0 +1,7 @@
+Flask
+Flask-WTF
+openai
+requests
+python-dotenv
+selenium
+email-validator
