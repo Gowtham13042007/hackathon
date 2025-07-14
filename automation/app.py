@@ -11,7 +11,7 @@ import os
 
 load_dotenv()
 
-url=os.environ.get("url")
+url="https://api.sheety.co/8d20805061d1a350ce890f89b6ab9ac8/careerOptions/formResponses1"
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("secret_key")
