@@ -46,7 +46,7 @@ def oneliner(ambition):
      if len(ambition.strip().split()) == 1:
         return ambition.strip().capitalize()
       
-     prompt=f'''Given the following career title, summarize it into 1–2 words that capture the core profession or field as a “dream career” label. Just return the label text without any extra explanation.
+     prompt=f'''Given the following career title, get the profession in 1-2 words. Just return the label text without any extra explanation.
                 Career Title: {ambition}'''
      response = client.chat.completions.create(
         model="gpt-3.5-turbo",
